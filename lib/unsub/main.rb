@@ -98,13 +98,13 @@ module Unsub
 
           success = case event.kind
           when :launch
-            s1 = services[:icinga].disable_downtime event.host
+            s1 = services[:icinga].enable_notifications event.host
             s2 = services[:chef].remove_tag event.host, 'terminated'
             s3 = services[:chef].add_tag event.host, 'launched'
             s1 && s2 && s3
           when :terminate
             s1 = services[:sensu].delete_client event.host
-            s2 = services[:icinga].enable_downtime event.host
+            s2 = services[:icinga].disable_notifications event.host
             s3 = services[:chef].remove_tag event.host, 'launched'
             s4 = services[:chef].add_tag event.host, 'terminated'
             db.delete! event.host[:id]

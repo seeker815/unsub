@@ -10,16 +10,16 @@ module Unsub
       end
 
 
-      def enable_downtime host
-        success = cgi_command 28, host # CMD_ENABLE_HOST_SVC_NOTIFICATIONS
-        log.info service: 'icinga', event: 'enable_downtime', host: host, success: success
+      def disable_notifications host
+        success = cgi_command 29, host # CMD_DISABLE_HOST_SVC_NOTIFICATIONS
+        log.info service: 'icinga', event: 'disable_notifications', host: host, success: success
         success
       end
 
 
-      def disable_downtime host
-        success = cgi_command 29, host # CMD_DISABLE_HOST_SVC_NOTIFICATIONS
-        log.info service: 'icinga', event: 'disable_downtime', host: host, success: success
+      def enable_notifications host
+        success = cgi_command 28, host # CMD_ENABLE_HOST_SVC_NOTIFICATIONS
+        log.info service: 'icinga', event: 'enable_notifications', host: host, success: success
         success
       end
 
