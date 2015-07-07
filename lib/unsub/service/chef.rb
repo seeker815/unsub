@@ -1,19 +1,26 @@
-require 'ridley'
+require 'chef-api'
+
+require_relative 'chef/config'
+
 
 module Unsub
   module Service
     class Chef < Base
-      attr_reader :ridley
+      attr_reader :knife, :api
 
       def initialize knife, log
-        @ridley = Ridley.from_chef_config knife
-        @log    = log
+        @log   = log
+        @knife = Config.new knife
+        @api   = ChefAPI::Connection.new \
+          endpoint: @knife.chef_server_url,
+          client: @knife.node_name,
+          key: @knife.client_key
       end
 
 
       def extend_host host
         name = if ip = host[:ip]
-          ridley.search(:node, 'ipaddress:"%s"' % ip).shift.name rescue nil
+          api.search.query(:node, 'ipaddress:"%s"' % ip).rows.shift.name rescue nil
         end
 
         old_host = host.dup ; host.merge! chef_name: name if name
@@ -24,11 +31,10 @@ module Unsub
 
       def add_tag host, tag
         success = if name = host[:chef_name]
-          node = ridley.node.find name
-          node.reload
-          node.normal.tags ||= []
-          node.normal.tags << tag
-          node.normal.tags.uniq!
+          node = api.nodes.fetch name
+          node.normal['tags'] ||= []
+          node.normal['tags'] << tag
+          node.normal['tags'].uniq!
           !!node.save
         end
 
@@ -39,10 +45,9 @@ module Unsub
 
       def remove_tag host, tag
         success = if name = host[:chef_name]
-          node = ridley.node.find name
-          node.reload
-          node.normal.tags ||= []
-          node.normal.tags.delete tag
+          node = api.nodes.fetch name
+          node.normal['tags'] ||= []
+          node.normal['tags'].delete tag
           !!node.save
         end
 

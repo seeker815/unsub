@@ -142,52 +142,52 @@ def bundle_install
     sh! 'rm -f pkg/vendor/*/*/cache/*'
     sh! 'rm -rf pkg/vendor/ruby/*/extensions'
 
-    # # Remove tests
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/test'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/tests'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/spec'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/features'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/benchmark'
+    # Remove tests
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/test'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/tests'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/spec'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/features'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/benchmark'
 
-    # # Remove documentation
-    # sh! 'rm -f pkg/vendor/ruby/*/gemS/*/README*'
-    # sh! 'rm -f pkg/vendor/ruby/*/gemS/*/CHANGE*'
-    # sh! 'rm -f pkg/vendor/ruby/*/gemS/*/change*'
-    # sh! 'rm -f pkg/vendor/ruby/*/gemS/*/COPYING*'
-    # sh! 'rm -f pkg/vendor/ruby/*/gemS/*/LICENSE*'
-    # sh! 'rm -f pkg/vendor/ruby/*/gemS/*/MIT-LICENSE*'
-    # sh! 'rm -f pkg/vendor/ruby/*/gemS/*/TODO'
-    # sh! 'rm -f pkg/vendor/ruby/*/gems/*/*.txt'
-    # sh! 'rm -f pkg/vendor/ruby/*/gems/*/*.md'
-    # sh! 'rm -f pkg/vendor/ruby/*/gems/*/*.rdoc'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/doc'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/docs'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/example'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/examples'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/sample'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/doc-api'
-    # sh! "find pkg/vendor/ruby -name '*.md' -exec rm -rf {} \\;"
+    # Remove documentation
+    sh! 'rm -f pkg/vendor/ruby/*/gemS/*/README*'
+    sh! 'rm -f pkg/vendor/ruby/*/gemS/*/CHANGE*'
+    sh! 'rm -f pkg/vendor/ruby/*/gemS/*/change*'
+    sh! 'rm -f pkg/vendor/ruby/*/gemS/*/COPYING*'
+    sh! 'rm -f pkg/vendor/ruby/*/gemS/*/LICENSE*'
+    sh! 'rm -f pkg/vendor/ruby/*/gemS/*/MIT-LICENSE*'
+    sh! 'rm -f pkg/vendor/ruby/*/gemS/*/TODO'
+    sh! 'rm -f pkg/vendor/ruby/*/gems/*/*.txt'
+    sh! 'rm -f pkg/vendor/ruby/*/gems/*/*.md'
+    sh! 'rm -f pkg/vendor/ruby/*/gems/*/*.rdoc'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/doc'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/docs'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/example'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/examples'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/sample'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/doc-api'
+    sh! "find pkg/vendor/ruby -name '*.md' -exec rm -rf {} \\;"
 
-    # # Remove misc unnecessary files
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/.gitignore'
-    # sh! 'rm -rf pkg/vendor/ruby/*/gems/*/.travis.yml'
+    # Remove misc unnecessary files
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/.gitignore'
+    sh! 'rm -rf pkg/vendor/ruby/*/gems/*/.travis.yml'
 
-    # # Remove leftover native extension sources and compilation objects
-    # sh! 'rm -f pkg/vendor/ruby/*/gems/*/Ext/makefile'
-    # sh! 'rm -f pkg/vendor/ruby/*/gems/*/exT/*/makefile'
-    # sh! 'rm -f pkg/vendor/ruby/*/gems/*/ext/*/tmp'
-    # sh! "find pkg/vendor/ruby -name '*.c' -exec rm -rf {} \\;"
-    # sh! "find pkg/vendor/ruby -name '*.cpp' -exec rm -rf {} \\;"
-    # sh! "find pkg/vendor/ruby -name '*.h' -exec rm -rf {} \\;"
-    # sh! "find pkg/vendor/ruby -name '*.rl' -exec rm -rf {} \\;"
-    # sh! "find pkg/vendor/ruby -name 'extconf.rb' -exec rm -rf {} \\;"
-    # sh! "find pkg/vendor/ruby/*/gems -name '*.o' -exec rm -rf {} \\;"
-    # sh! "find pkg/vendor/ruby/*/gems -name '*.so' -exec rm -rf {} \\;"
-    # sh! "find pkg/vendor/ruby/*/gems -name '*.bundle' -exec rm -rf {} \\;"
+    # Remove leftover native extension sources and compilation objects
+    sh! 'rm -f pkg/vendor/ruby/*/gems/*/Ext/makefile'
+    sh! 'rm -f pkg/vendor/ruby/*/gems/*/exT/*/makefile'
+    sh! 'rm -f pkg/vendor/ruby/*/gems/*/ext/*/tmp'
+    sh! "find pkg/vendor/ruby -name '*.c' -exec rm -rf {} \\;"
+    sh! "find pkg/vendor/ruby -name '*.cpp' -exec rm -rf {} \\;"
+    sh! "find pkg/vendor/ruby -name '*.h' -exec rm -rf {} \\;"
+    sh! "find pkg/vendor/ruby -name '*.rl' -exec rm -rf {} \\;"
+    sh! "find pkg/vendor/ruby -name 'extconf.rb' -exec rm -rf {} \\;"
+    sh! "find pkg/vendor/ruby/*/gems -name '*.o' -exec rm -rf {} \\;"
+    sh! "find pkg/vendor/ruby/*/gems -name '*.so' -exec rm -rf {} \\;"
+    sh! "find pkg/vendor/ruby/*/gems -name '*.bundle' -exec rm -rf {} \\;"
 
-    # # Remove Java files. They're only used for JRuby support
-    # sh! "find pkg/vendor/ruby -name '*.java' -exec rm -rf {} \\;"
-    # sh! "find pkg/vendor/ruby -name '*.class' -exec rm -rf {} \\;"
+    # Remove Java files. They're only used for JRuby support
+    sh! "find pkg/vendor/ruby -name '*.java' -exec rm -rf {} \\;"
+    sh! "find pkg/vendor/ruby -name '*.class' -exec rm -rf {} \\;"
   end
 end
 
@@ -204,6 +204,7 @@ def create_package target
   sh! "cp -R bin #{package_dir}/unsub"
   sh! "mkdir #{package_dir}/unsub/ruby"
   sh! "#{TAR} -xzf pkg/traveling-ruby-#{TRAVELING_RUBY_VERSION}-#{target}.tar.gz -C #{package_dir}/unsub/ruby"
+  sh! "chmod +x pkg/unsub.sh"
   sh! "cp pkg/unsub.sh #{package_dir}"
   sh! "cp -pR pkg/vendor #{package_dir}/unsub/vendor"
   sh! "cp -R unsub.gemspec Readme.md LICENSE VERSION Gemfile Gemfile.lock lib #{package_dir}/unsub/vendor"

@@ -1,5 +1,8 @@
 require 'net/http'
+require 'socket'
 require 'json'
+require 'date'
+require 'time'
 require 'uri'
 
 require 'daybreak'
@@ -11,7 +14,6 @@ require_relative 'service'
 require_relative 'event'
 
 
-Celluloid.logger = nil
 Thread.abort_on_exception = false
 
 

@@ -15,9 +15,10 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'thor', '~> 0'
   s.add_runtime_dependency 'slog', '~> 1'
-  s.add_runtime_dependency 'ridley'
   s.add_runtime_dependency 'aws-sdk'
   s.add_runtime_dependency 'daybreak'
+  s.add_runtime_dependency 'chef-api'
+  s.add_runtime_dependency 'buff-config'
 
   # Bundled libs
   s.add_runtime_dependency 'eventmachine', '= %s' % Unsub::EM_VERSION
