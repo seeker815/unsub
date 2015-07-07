@@ -20,7 +20,7 @@ module Unsub
 
       def extend_host host
         name = if ip = host[:ip]
-          api.search.query(:node, 'ipaddress:"%s"' % ip).rows.shift.name rescue nil
+          api.search.query(:node, 'ipaddress:"%s"' % ip).rows.shift['name'] rescue nil
         end
 
         old_host = host.dup ; host.merge! chef_name: name if name

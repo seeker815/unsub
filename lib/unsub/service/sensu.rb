@@ -12,10 +12,7 @@ module Unsub
 
       def extend_host host
         name = if ip = host[:ip]
-          get_clients = Net::HTTP::Get.new '/clients?limit=1000000'
-          response = http.request get_clients
-          clients  = JSON.parse response.body, symbolize_names: true
-          client   = clients.select { |c| c[:address] == ip }.shift
+          client = sensu_clients.select { |c| c[:address] == ip }.shift
           client.nil? ? nil : client[:name]
         end
 
@@ -35,6 +32,23 @@ module Unsub
         log.info service: 'sensu', event: 'delete_client', host: host, success: success
         success
       end
+
+
+    private
+
+      def sensu_clients limit=1000, offset=0, results=[]
+        loop do
+          endpoint = '/clients?limit=%d&offset=%d' % [ limit, offset ]
+          request  = Net::HTTP::Get.new endpoint
+          response = http.request request
+          clients  = JSON.parse response.body, symbolize_names: true
+
+          return results if clients.empty?
+          results += clients
+          offset  += limit
+        end
+      end
+
     end
   end
 end
