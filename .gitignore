@@ -1,0 +1,16 @@
+*~
+*.db
+*.gem
+*.log
+*.out
+*.pid
+*.swp
+*.deb
+*.gz
+.DS_Store
+.yardoc
+doc
+tmp
+config.json
+Gemfile.lock
+.vagrant
